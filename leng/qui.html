@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/jquery-3.2.1.min.js"></script>
+<body>
+    <table border="1" id="vae">
+        <tr>
+            <td>id</td>
+            <td>名称</td>
+        </tr>
+
+    </table>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+       var data={};
+       var  url = "http://www.lianxi.com/qiu.php";
+        $.ajax({
+                type:"post",
+                data:data,
+                dataType:"jsonp",
+                jsonp:"jsonpCallback",
+                url:url,
+                success:function(msg){
+                    $.each(msg,function(k,v){
+                        var set_sta=" <tr><td>"+v.name+"</td><td>"+v.age+"</td></tr>";
+                        $("#vae").append(set_sta);
+                    })
+                }
+    })
+    })
+</script>

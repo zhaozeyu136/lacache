@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/jquery-3.2.1.min.js"></script>
+<body>
+<form method="post" action="">
+    <h5>用户登录</h5>
+    用户账号：<input type="text" name="name">
+    <br>
+    用户登录：<input type="text" name="pwd">
+    <br>
+    <input type="button" id="but" value="登录">
+</form>
+</body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        $('#but').on('click',function(){
+            var name=$("input[name='name']").val();
+            var pwd=$("input[name='pwd']").val();
+            var data={};
+            data.name=name;
+            data.pwd=pwd;
+            $.ajax({
+                data:data,
+                dataType:"json",
+                type:"post",
+                url:"/login.php",
+                seccess:function(msg){
+
+                }
+
+            })
+        })
+    });
+</script>
